@@ -26,7 +26,7 @@ A PySide6 desktop application for generating synthetic employee data and exporti
 2. Run the application
     - Double-click EmployeeApp.exe to launch the app.
     - No Python installation or dependencies are required on the user machine.
-   ```
+   
 
 ## How to use app
 
