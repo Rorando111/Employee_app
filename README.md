@@ -18,27 +18,24 @@ A PySide6 desktop application for generating synthetic employee data and exporti
 - openpyxl
 - faker
 
-## Installation
+## Installation 
 
-1. Clone or download the project
-2. Install dependencies:
-   ```bash
-   pip install PySide6 pandas openpyxl faker
-   ```
-3. Run the application:
-   ```bash
-   cd Employee_App/src
-   python main.py
+1. Download the executable
+    - Download the pre-built EmployeeApp.exe file from the repository or provided link.
+
+2. Run the application
+    - Double-click EmployeeApp.exe to launch the app.
+    - No Python installation or dependencies are required on the user machine.
    ```
 
-## Usage
+## How to use app
 
 1. **Enter Employee Count**: Input the number of employees to generate (1-1000)
 2. **Select Folder**: Choose the export destination folder
 3. **Generate Data**: Click "Generate Data" to create synthetic employee records
 4. **Export to Excel**: Click "Export to Excel" to save the data
 
-## Generated Data Fields
+## Data in Excel
 
 - **emp_id**: Auto-incrementing integer starting from 1
 - **full_name**: Realistic full name generated using Faker
@@ -97,4 +94,4 @@ This project is open source. Feel free to use and modify as needed.
 
 ## Author
 
-Kilo Code
+Rolando Celeste

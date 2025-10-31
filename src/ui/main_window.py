@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont, QPalette, QColor
 from utils.constants import DEFAULT_EMPLOYEE_COUNT
-
+import os
 
 class MainWindow(QMainWindow):
     """

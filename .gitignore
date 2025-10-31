@@ -13,3 +13,26 @@ __pycache__/
 # Ignore IDE/project files
 .vscode/
 .idea/
+
+# Ignore deployment artifacts (too large for GitHub)
+dist/
+build/
+*.spec
+deployment/
+*.exe
+*.app
+*.dmg
+*.msi
+*.pkg
+
+# Ignore generated Excel files
+*.xlsx
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore test outputs
+.coverage
+htmlcov/
+.pytest_cache/

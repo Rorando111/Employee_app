@@ -6,7 +6,6 @@ Tests cover data generation, validation, and integration with the main applicati
 
 Run with: python -m pytest src/tests/test_gen.py -v
 
-Author: Kilo Code
 """
 
 import sys

@@ -10,7 +10,6 @@ Features:
 - Add export timestamp for audit trail
 - Handle large datasets efficiently
 
-Author: Kilo Code
 """
 
 import logging
@@ -87,10 +86,10 @@ class ExcelExporter:
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             timestamp_row = pd.DataFrame({
                 'department': ['Export Timestamp'],
-                'avg_salary': [None],
+                'avg_salary': [pd.NA],
                 'employee_count': [timestamp]
             })
-            
+
             # Combine summary with timestamp
             summary = pd.concat([summary, timestamp_row], ignore_index=True)
             
