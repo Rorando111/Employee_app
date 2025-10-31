@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont, QPalette, QColor
+from utils.constants import DEFAULT_EMPLOYEE_COUNT
 
 
 class MainWindow(QMainWindow):
@@ -63,6 +64,8 @@ class MainWindow(QMainWindow):
 
         # Connect button signals to slots
         self._connect_signals()
+
+        self.employee_count_input.setText(str(DEFAULT_EMPLOYEE_COUNT))
 
         logging.info("MainWindow initialized successfully")
 
@@ -240,7 +243,7 @@ class MainWindow(QMainWindow):
                 QMessageBox.warning(self, "Input Error", "Please enter a valid number.")
                 return
 
-            # Import here to avoid circular imports
+            # Import and use data generator
             from services.data_gen import EmployeeDataGenerator
             
             # Generate data
@@ -262,11 +265,9 @@ class MainWindow(QMainWindow):
             self._update_status("Error generating data", error=True)
             QMessageBox.critical(self, "Generation Error", f"Failed to generate employee data:\n{str(e)}")
 
-
     def _export_to_excel(self):
         """
         Export employee data to Excel file.
-        This is a placeholder - actual implementation will be added in Phase 3.
         """
         if not self.employee_data:
             QMessageBox.warning(self, "No Data", "Please generate employee data first.")
@@ -276,9 +277,38 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "No Folder", "Please select an export folder first.")
             return
 
-        # Placeholder for Excel export
-        self._update_status("Excel export implementation pending")
-        logging.info("Excel export requested")
+        try:
+            # Import and use Excel exporter
+            from services.excel_export import ExcelExporter
+            
+            # Update status
+            self._update_status("Exporting to Excel...")
+            
+            # Create exporter and export
+            exporter = ExcelExporter()
+            file_path = exporter.export_to_excel(self.employee_data, self.selected_folder)
+            
+            # Update status with success message
+            file_name = os.path.basename(file_path)
+            self._update_status(f"File '{file_name}' exported successfully!")
+            
+            # Show success message
+            QMessageBox.information(
+                self, 
+                "Export Complete", 
+                f"Employee data has been exported to:\n{file_path}\n\nGenerated {len(self.employee_data)} employee records."
+            )
+            
+            logging.info(f"Excel export completed: {file_path}")
+
+        except Exception as e:
+            logging.error(f"Error in Excel export: {e}")
+            self._update_status("Export failed", error=True)
+            QMessageBox.critical(
+                self, 
+                "Export Error", 
+                f"Failed to export data to Excel:\n{str(e)}"
+            )
 
     def _update_status(self, message, error=False):
         """

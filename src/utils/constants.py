@@ -4,7 +4,6 @@ Application Constants
 This module contains all constant values used throughout the Employee Data Generator application.
 Centralizing constants here makes them easy to maintain and modify.
 
-Author: Kilo Code
 """
 
 from datetime import date
@@ -61,6 +60,12 @@ Name of the main data sheet in the Excel file.
 SUMMARY_SHEET_NAME = "Summary"
 """
 Name of the summary sheet with department averages.
+"""
+
+# UI constants
+DEFAULT_EMPLOYEE_COUNT = 10
+"""
+Default value for employee count input field.
 """
 
 # Logging
